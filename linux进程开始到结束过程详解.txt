@@ -1,5 +1,6 @@
 
 创建进程：
+fork()/vfork()/__clone()
 
     fork()
     {
@@ -9,7 +10,26 @@
             {
                 copy_process()
                 {
+                    1. 为新进程创建内核栈、thread_info结构和task_struct，这些值与父进程相同
                     dup_task_struct()
+                    
+                    2. 检查并确保新创建子进程后，当前用户拥有的进程数目没有超过分配资源的限制
+                    
+                    3. 进程描述符相关值清0、初始化
+                    
+                    4. 子进程状态被设置为TASK_UNINTERRUPTIBLE
+                    
+                    5. copy_flag() 更新task_struct的flag成员
+                       表明进程是否拥有超级权限的PF_SUPERPRIV标志被清0
+                       表明进程还没有调用exec()函数的PF_FORKNOEXEC标志被置位
+                       
+                    6. 为新进程分配有效PID
+                    alloc_pid()
+                    
+                    7. 根据传递给clone()的参数标志,copy_process()拷贝或共享打开的文件、文件系统信息、
+                    信号处理函数、进程地址空间和命名空间等
+                    
+                    8. 返回一个指向子进程的指针
                 }
             }    
         }        
