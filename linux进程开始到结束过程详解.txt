@@ -1,0 +1,59 @@
+
+创建进程：
+
+    fork()
+    {
+        clone()
+        {
+            do_fork()
+            {
+                copy_process()
+                {
+                    dup_task_struct()
+                }
+            }    
+        }        
+    }
+
+进程载入：
+execl()/execlp()/execle()/execv()/execvp()
+
+execve()
+{
+    sys_execve()
+    {
+        do_execve()
+        {
+            1. find_wait_load_file
+            if (success)
+            {
+                read file_head 128Byte
+            }
+            
+            2. 根据可执行文件类型调用相应的装载处理过程
+            search_binary_handle()
+            
+            3. 修改返回地址为elf可执行文件的入口点
+        }
+    }
+    
+    4. EIP寄存器直接跳转到ELF程序的入口地址
+}
+
+进程终结：
+    exit()
+    {
+        do_exit()
+        {
+            no return;
+        }
+    }
+
+    
+
+
+
+
+
+
+
