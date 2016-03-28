@@ -1,0 +1,90 @@
+STM32 基于固件库开发
+
+stm32f4_dsp_stdperiph_lib\STM32F4xx_DSP_StdPeriph_Lib_V1.6.1目录结构：
+
+_htmresc
+
+Libraries
+    CMSIS
+        Device
+            ST\STM32F4xx
+                Include
+                    stm32f4xx.h                      包含STM32中的寄存器地址和结构体类型定义
+                    system_stm32f4xx.h               system_stm32f4xx.c的头文件
+                Source
+                    Templates
+                        system_stm32f4xx.c           设置系统时钟和总线时钟                       
+                        IAR
+                            startup_stm32f411xe.s    启动文件
+                        ARM
+                        
+        Documentation
+        DSP_Lib
+        
+        Include
+        
+        
+            core_cm4.h                               提供进入CM4内核的接口
+            
+        Lib
+        RTOS        
+    STM32F4xx_StdPeriph_Driver
+        inc
+            misc.h                                   misc.c的头文件
+            stm32f4xx_ppp.h                          stm32f4xx_ppp.c的头文件
+            ...
+        src
+            misc.c                                   提供外设对内核中的NVIC的访问函数
+            stm32f4xx_ppp.c                          设备外设驱动接口
+            ...
+Project
+    stm32f4xx_conf.h
+    stm32f4xx_it.c
+    stm32f4xx_it.h
+    system_stm32f4xx.c
+    main.c
+    
+Utilities
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
