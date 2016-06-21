@@ -1,0 +1,60 @@
+
+
+irqreturn_t xxx_interrupt(int irq, void* dev_id)
+{
+	...
+	
+	/* 获知中断源 */
+	int status = read_int_status();
+	
+	/* 判断是否为本设备中断，不是立即返回 */
+	if (! is_myint(dev_id, status))
+	{
+		return IRQ_NONE;
+	}
+	
+	...
+	
+	return IRQ_HANDLE;		
+}
+
+int __init xxx_init(void)
+{
+	...
+	
+	/* 申请中断 */
+	result = request_irq(xxx_irq, xxx_interrupt, 0, "xxx", NULL);
+	
+	...
+	
+}
+
+void __exit xxx_exit(void)
+{
+	...
+	
+	/* 释放中断 */
+	free_irq(xxx_irq, xxx_interrupt);
+	
+	...
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
