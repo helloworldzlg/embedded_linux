@@ -1,0 +1,55 @@
+
+/* 定义tasklet和底半部函数并将它们关联 */
+void xxx_do_tasklet(unsigned long);
+DECLARE_TASKLET(xxx_tasklet, xxx_do_tasklet, 0);
+
+irqreturn_t xxx_interrupt(int irq, void* dev_id)
+{
+	...
+	
+	task_schedule(&xxx_tasklet);
+	
+	...
+}
+
+int __init xxx_init(void)
+{
+	...
+	
+	/* 申请中断 */
+	result = request_irq(xxx_irq, xxx_interrupt, 0, "xxx", NULL);
+	
+	...
+	
+	return IRQ_HANDLE;
+}
+
+void __exit xxx_exit(void)
+{
+	...
+	
+	/* 释放中断 */
+	free_irq(xxx_irq, xxx_interrupt);
+	
+	...
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
