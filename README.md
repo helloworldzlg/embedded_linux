@@ -1,4 +1,4 @@
-# embedded_linux_learning
+# embedded_linux guide
 linux设备驱动开发、系统开发
 
 ## [1. 嵌入式开发环境配置、工具链安装和使用](./md/01_EmdeddedBase.md)
